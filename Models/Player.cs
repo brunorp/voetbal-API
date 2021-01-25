@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace voetbal_api.Models
 {
@@ -14,5 +15,10 @@ namespace voetbal_api.Models
         [Required(ErrorMessage="Field \"Position\" is required.", AllowEmptyStrings=false)]
         [MaxLength(30, ErrorMessage="Position max length is 50 characters")]
         public string Position { get; set; }
+        
+        [ForeignKey("Team")]
+        public int TeamId { get; set; }
+        
+        public Team team { get; set; }
     }
 }
