@@ -12,6 +12,6 @@ namespace voetbal_api.Models
         [MaxLength(50, ErrorMessage="Name max length is 50 characters")]
         public string Name { get; set; }
 
-        public List<Player> players { get; set; }
+        public List<Player> Players { get; set; }
     }
 }
