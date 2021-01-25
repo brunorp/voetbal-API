@@ -37,5 +37,14 @@ namespace voetbal_api.Controllers
 
             return teams;
         }
+
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<Team> GetTeam(int id)
+        {
+            var team = await _context.Teams.FindAsync(id);
+
+            return team;
+        }
     }
 }
