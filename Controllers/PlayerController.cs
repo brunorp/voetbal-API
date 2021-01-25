@@ -35,6 +35,10 @@ namespace voetbal_api.Controllers
         public async Task<List<Player>> getPlayers()
         {
             var players = await _context.Players.ToListAsync();
+            foreach(var player in players)
+            {
+                player.Team = await _context.Teams.FindAsync(player.TeamId);
+            }
 
             return players;
         }
