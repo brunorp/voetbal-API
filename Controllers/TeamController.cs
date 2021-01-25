@@ -9,12 +9,20 @@ namespace voetbal_api.Controllers
     [Route("team")]
     public class TeamController : ControllerBase
     {
+
+        public DataContext _context { get; set; }
+
+        public TeamController(DataContext context)
+        {
+            _context = context;
+        }
+
         [HttpPost]
         [Route("")]
-        public async Task<Team> postTeam([FromServices] DataContext context, [FromBody] Team team)
+        public async Task<Team> postTeam([FromBody] Team team)
         {
-            context.Teams.Add(team);
-            await context.SaveChangesAsync();
+            _context.Teams.Add(team);
+            await _context.SaveChangesAsync();
 
             return team;
         }
