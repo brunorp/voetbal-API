@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,7 @@ namespace voetbal_api.Controllers
         [Route("")]
         public async Task<Player> postPlayer([FromBody] Player player)
         {
+            player.Team =  _context.Teams.Find(player.TeamId);
             _context.Players.Add(player);
             await _context.SaveChangesAsync();
 
