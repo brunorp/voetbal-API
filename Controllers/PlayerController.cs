@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using voetbal_api.Data;
 using voetbal_api.Models;
 
@@ -24,6 +26,15 @@ namespace voetbal_api.Controllers
             await _context.SaveChangesAsync();
 
             return player;
+        }
+
+        [HttpGet]
+        [Route("")]
+        public async Task<List<Player>> getPlayers()
+        {
+            var players = await _context.Players.ToListAsync();
+
+            return players;
         }
     }
 }
