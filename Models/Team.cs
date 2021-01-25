@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace voetbal_api.Models
@@ -10,5 +11,7 @@ namespace voetbal_api.Models
         [Required(ErrorMessage = "Field \"Name\" is required.", AllowEmptyStrings=false)]
         [MaxLength(50, ErrorMessage="Name max length is 50 characters")]
         public string Name { get; set; }
+
+        public List<Player> players { get; set; }
     }
 }

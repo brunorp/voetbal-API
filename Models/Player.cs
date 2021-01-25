@@ -19,6 +19,6 @@ namespace voetbal_api.Models
         [ForeignKey("Team")]
         public int TeamId { get; set; }
         
-        public Team team { get; set; }
+        public Team Team { get; set; }
     }
 }
