@@ -29,7 +29,17 @@ namespace voetbal_api.Controllers
 
             return team;
         }
-        
+
+        [HttpDelete]
+        [Route("delete/{id}")]
+        public async void DeleteTeam(int id)
+        {
+            var team = await _context.Teams.FindAsync(id);
+            _context.Teams.Remove(team);
+
+           await _context.SaveChangesAsync();
+        }
+
         [HttpGet]
         [Route("")]
         public async Task<List<Team>> GetTeams()
