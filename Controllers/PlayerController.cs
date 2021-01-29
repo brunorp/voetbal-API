@@ -49,7 +49,17 @@ namespace voetbal_api.Controllers
         {
             var player = await _context.Players.FindAsync(id);
             player.Team = await _context.Teams.FindAsync(player.TeamId);
+
             return player;
+        }
+
+        [HttpGet]
+        [Route("team/{id}")]
+        public async Task<string> GetPlayerTeam(int id)
+        {
+            var player = await GetPlayer(id);
+
+            return player.Team.Name;
         }
     }
 }
