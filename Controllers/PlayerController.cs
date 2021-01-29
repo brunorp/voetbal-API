@@ -38,6 +38,7 @@ namespace voetbal_api.Controllers
             foreach(var player in players)
             {
                 player.Team = await _context.Teams.FindAsync(player.TeamId);
+                player.Team.Players = null;
             }
 
             return players;
