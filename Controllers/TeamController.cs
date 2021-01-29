@@ -58,6 +58,7 @@ namespace voetbal_api.Controllers
         public async Task<Team> GetTeam(int id)
         {
             var team = await _context.Teams.FindAsync(id);
+            team.Players = await _context.Players.Where(player => player.TeamId == team.TeamId).ToListAsync();
 
             return team;
         }
